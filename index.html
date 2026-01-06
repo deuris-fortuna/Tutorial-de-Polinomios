@@ -1,436 +1,222 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial: Suma y Resta de Polinomios</title>
-    <!-- 
-    📋 INSTRUCCIONES PARA CODEPEN:
-    1. Copia TODO lo que está entre las etiquetas <style> y pégalo en la sección CSS
-    2. Copia TODO lo que está entre <body> y </body> y pégalo en la sección HTML
-    3. ¡Listo! Se verá perfecto automáticamente
-    -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            font-size: 48px;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .header p {
-            font-size: 24px;
-            color: #666;
-        }
-        
-        .lesson {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-        
-        .example-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-        
-        .example-title {
-            font-size: 36px;
-            color: #667eea;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .problem {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 42px;
-            font-family: 'Courier New', monospace;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: bold;
-        }
-        
-        .step {
-            margin-bottom: 40px;
-            padding: 30px;
-            background: #f8f9fa;
-            border-radius: 15px;
-            border-left: 6px solid #667eea;
-        }
-        
-        .step-number {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 50px;
-            font-size: 28px;
-            font-weight: bold;
-            margin-right: 20px;
-        }
-        
-        .step-title {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-        .step-content {
-            font-size: 28px;
-            color: #555;
-            line-height: 1.8;
-            margin-left: 70px;
-        }
-        
-        .math-work {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 32px;
-            margin: 20px 0;
-            border: 3px solid #e0e0e0;
-        }
-        
-        .highlight-red {
-            color: #ef4444;
-            font-weight: bold;
-            background: #fee2e2;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        
-        .highlight-blue {
-            color: #3b82f6;
-            font-weight: bold;
-            background: #dbeafe;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        
-        .highlight-green {
-            color: #10b981;
-            font-weight: bold;
-            background: #d1fae5;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        
-        .result {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            font-size: 48px;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            margin-top: 30px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-        }
-        
-        .tip-box {
-            background: #fef3c7;
-            border: 3px solid #fbbf24;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-        
-        .tip-box .icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-        
-        .tip-box h3 {
-            font-size: 28px;
-            color: #92400e;
-            margin-bottom: 15px;
-        }
-        
-        .tip-box p {
-            font-size: 24px;
-            color: #78350f;
-            line-height: 1.6;
-        }
-        
-        .rules {
-            background: #e0e7ff;
-            border-radius: 15px;
-            padding: 30px;
-            margin-top: 40px;
-        }
-        
-        .rules h2 {
-            font-size: 36px;
-            color: #4338ca;
-            margin-bottom: 25px;
-        }
-        
-        .rule-item {
-            font-size: 26px;
-            color: #312e81;
-            margin: 20px 0;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .rule-item .check {
-            font-size: 36px;
-            color: #10b981;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        
-        .btn {
-            background: white;
-            color: #667eea;
-            border: 3px solid #667eea;
-            padding: 20px 40px;
-            font-size: 24px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        .btn:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suma y Resta de Polinomios</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Segoe UI',Tahoma,sans-serif;
+background:linear-gradient(135deg,#667eea,#764ba2);
+min-height:100vh;
+padding:20px;
+}
+
+.container{max-width:1400px;margin:auto}
+
+.header{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.3);
+text-align:center;
+margin-bottom:30px;
+}
+
+.header h1{font-size:48px;color:#667eea}
+.header p{font-size:24px;color:#555}
+
+.example-card{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.3);
+margin-bottom:40px;
+}
+
+.example-title{
+font-size:36px;
+color:#667eea;
+margin-bottom:25px;
+}
+
+.problem{
+background:linear-gradient(135deg,#667eea,#764ba2);
+color:white;
+padding:25px;
+border-radius:15px;
+font-size:38px;
+text-align:center;
+font-family:'Courier New',monospace;
+margin-bottom:30px;
+}
+
+.step{
+background:#f8f9fa;
+padding:25px;
+border-radius:15px;
+border-left:6px solid #667eea;
+margin-bottom:25px;
+}
+
+.step-title{font-size:28px;font-weight:bold;color:#333;margin-bottom:15px}
+.step-content{font-size:24px;color:#555}
+
+.math-work{
+background:white;
+padding:20px;
+border-radius:10px;
+font-family:'Courier New',monospace;
+font-size:26px;
+border:3px solid #ddd;
+margin-top:15px;
+}
+
+.result{
+background:linear-gradient(135deg,#10b981,#059669);
+color:white;
+padding:25px;
+border-radius:15px;
+font-size:36px;
+text-align:center;
+margin-top:25px;
+}
+
+.btn{
+background:white;
+color:#667eea;
+border:3px solid #667eea;
+padding:18px 35px;
+font-size:22px;
+font-weight:bold;
+border-radius:50px;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#667eea;
+color:white;
+}
+
+input{
+width:100%;
+padding:20px;
+font-size:24px;
+border-radius:10px;
+border:3px solid #667eea;
+margin:20px 0;
+}
+
+.nav-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:30px;
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📐 Suma y Resta de Polinomios</h1>
-            <p>Aprende paso a paso con ejemplos claros</p>
-        </div>
+<div class="container">
 
-        <div class="lesson">
-            <!-- EJEMPLO 1: SUMA -->
-            <div class="example-card">
-                <div class="example-title">
-                    <span>➕</span> EJEMPLO 1: SUMA DE POLINOMIOS
-                </div>
+<div class="header">
+<h1>📐 Suma y Resta de Polinomios</h1>
+<p>Ejemplos resueltos y práctica guiada</p>
+</div>
 
-                <div class="problem">
-                    (3x² + 2x - 5) + (x² - 4x + 7)
-                </div>
+<!-- SUMA 1 -->
+<div class="example-card">
+<div class="example-title">➕ EJEMPLO 1: SUMA</div>
+<div class="problem">(3x² + 2x - 5) + (x² - 4x + 7)</div>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">1</span>
-                        Identificar términos semejantes
-                    </div>
-                    <div class="step-content">
-                        Los términos semejantes tienen las mismas variables con los mismos exponentes:
-                        <div class="math-work">
-                            Términos con x²: <span class="highlight-red">3x²</span> y <span class="highlight-red">x²</span><br>
-                            Términos con x: <span class="highlight-blue">2x</span> y <span class="highlight-blue">-4x</span><br>
-                            Términos independientes: <span class="highlight-green">-5</span> y <span class="highlight-green">+7</span>
-                        </div>
-                    </div>
-                </div>
+<div class="step">
+<div class="step-title">Resultado</div>
+<div class="math-work">4x² - 2x + 2</div>
+</div>
+</div>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">2</span>
-                        Agrupar términos semejantes
-                    </div>
-                    <div class="step-content">
-                        Mantenemos los signos y agrupamos:
-                        <div class="math-work">
-                            = (<span class="highlight-red">3x² + x²</span>) + (<span class="highlight-blue">2x - 4x</span>) + (<span class="highlight-green">-5 + 7</span>)
-                        </div>
-                    </div>
-                </div>
+<!-- SUMA 2 -->
+<div class="example-card">
+<div class="example-title">➕ EJEMPLO 2: SUMA</div>
+<div class="problem">(2x² + 5x - 3) + (4x² - x + 6)</div>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">3</span>
-                        Sumar los coeficientes
-                    </div>
-                    <div class="step-content">
-                        Operamos cada grupo:
-                        <div class="math-work">
-                            <span class="highlight-red">3x² + x² = 4x²</span><br>
-                            <span class="highlight-blue">2x - 4x = -2x</span><br>
-                            <span class="highlight-green">-5 + 7 = 2</span>
-                        </div>
-                    </div>
-                </div>
+<div class="step">
+<div class="step-title">Resultado</div>
+<div class="math-work">6x² + 4x + 3</div>
+</div>
+</div>
 
-                <div class="result">
-                    ✓ RESULTADO: 4x² - 2x + 2
-                </div>
+<!-- RESTA 1 -->
+<div class="example-card">
+<div class="example-title">➖ EJEMPLO 1: RESTA</div>
+<div class="problem">(5x² + 3x - 2) - (2x² + x - 4)</div>
 
-                <div class="tip-box">
-                    <div class="icon">💡</div>
-                    <h3>Consejo importante:</h3>
-                    <p>Solo puedes sumar términos que tengan exactamente las mismas variables con los mismos exponentes. 3x² + 2x NO se puede simplificar más porque son términos diferentes.</p>
-                </div>
-            </div>
+<div class="step">
+<div class="step-title">Resultado</div>
+<div class="math-work">3x² + 2x + 2</div>
+</div>
+</div>
 
-            <!-- EJEMPLO 2: RESTA -->
-            <div class="example-card">
-                <div class="example-title">
-                    <span>➖</span> EJEMPLO 2: RESTA DE POLINOMIOS
-                </div>
+<!-- RESTA 2 -->
+<div class="example-card">
+<div class="example-title">➖ EJEMPLO 2: RESTA</div>
+<div class="problem">(7x² - 4x + 1) - (3x² - 2x - 5)</div>
 
-                <div class="problem">
-                    (5x² + 3x - 2) - (2x² + x - 4)
-                </div>
+<div class="step">
+<div class="step-title">Resultado</div>
+<div class="math-work">4x² - 2x + 6</div>
+</div>
+</div>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">1</span>
-                        ¡CLAVE! Cambiar signos del segundo polinomio
-                    </div>
-                    <div class="step-content">
-                        Al restar, cambiamos TODOS los signos del segundo paréntesis:
-                        <div class="math-work">
-                            Original: - (2x² + x - 4)<br>
-                            <br>
-                            Cambiando signos:<br>
-                            +2x² se vuelve <span class="highlight-red">-2x²</span><br>
-                            +x se vuelve <span class="highlight-blue">-x</span><br>
-                            -4 se vuelve <span class="highlight-green">+4</span>
-                        </div>
-                    </div>
-                </div>
+<!-- PRACTICA -->
+<div class="example-card" id="practicar">
+<div class="example-title">📝 PRÁCTICA DEL ESTUDIANTE</div>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">2</span>
-                        Escribir sin paréntesis
-                    </div>
-                    <div class="step-content">
-                        Ahora queda:
-                        <div class="math-work">
-                            = 5x² + 3x - 2 <span class="highlight-red">- 2x²</span> <span class="highlight-blue">- x</span> <span class="highlight-green">+ 4</span>
-                        </div>
-                    </div>
-                </div>
+<div class="problem">(x² + 3x + 2) + (2x² - x + 5)</div>
+<input id="r1" placeholder="Respuesta ejercicio 1">
+<button class="btn" onclick="verificar('r1','3x²+2x+7')">Verificar</button>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">3</span>
-                        Agrupar términos semejantes
-                    </div>
-                    <div class="step-content">
-                        <div class="math-work">
-                            = (<span class="highlight-red">5x² - 2x²</span>) + (<span class="highlight-blue">3x - x</span>) + (<span class="highlight-green">-2 + 4</span>)
-                        </div>
-                    </div>
-                </div>
+<div class="problem">(4x² - 5x + 1) - (x² - 2x - 3)</div>
+<input id="r2" placeholder="Respuesta ejercicio 2">
+<button class="btn" onclick="verificar('r2','3x²-3x+4')">Verificar</button>
 
-                <div class="step">
-                    <div class="step-title">
-                        <span class="step-number">4</span>
-                        Operar
-                    </div>
-                    <div class="step-content">
-                        <div class="math-work">
-                            <span class="highlight-red">5x² - 2x² = 3x²</span><br>
-                            <span class="highlight-blue">3x - x = 2x</span><br>
-                            <span class="highlight-green">-2 + 4 = 2</span>
-                        </div>
-                    </div>
-                </div>
+<div class="problem">(6x² + x - 4) + (2x² + 3x + 6)</div>
+<input id="r3" placeholder="Respuesta ejercicio 3">
+<button class="btn" onclick="verificar('r3','8x²+4x+2')">Verificar</button>
 
-                <div class="result">
-                    ✓ RESULTADO: 3x² + 2x + 2
-                </div>
+<div id="feedback" class="result" style="display:none"></div>
+</div>
 
-                <div class="tip-box">
-                    <div class="icon">⚠️</div>
-                    <h3>¡Cuidado con los signos!</h3>
-                    <p>El error más común en la resta es olvidar cambiar TODOS los signos. Recuerda: cuando hay un signo menos (-) antes de un paréntesis, cambia todos los signos dentro.</p>
-                </div>
-            </div>
+<div class="nav-buttons">
+<button class="btn" onclick="window.print()">🖨️ Imprimir</button>
+<button class="btn" onclick="irAPracticar()">🚀 Ir a Practicar</button>
+</div>
 
-            <!-- REGLAS DE ORO -->
-            <div class="example-card">
-                <div class="rules">
-                    <h2>🏆 Reglas de Oro</h2>
-                    
-                    <div class="rule-item">
-                        <span class="check">✓</span>
-                        <strong>Regla 1:</strong> Solo sumas términos semejantes (mismas variables con mismos exponentes)
-                    </div>
-                    
-                    <div class="rule-item">
-                        <span class="check">✓</span>
-                        <strong>Regla 2:</strong> En la resta, cambia TODOS los signos del segundo polinomio
-                    </div>
-                    
-                    <div class="rule-item">
-                        <span class="check">✓</span>
-                        <strong>Regla 3:</strong> Mantén el orden: x², x, término independiente
-                    </div>
-                    
-                    <div class="rule-item">
-                        <span class="check">✓</span>
-                        <strong>Regla 4:</strong> Verifica tu respuesta: ¿tiene sentido el resultado?
-                    </div>
-                </div>
+</div>
 
-                <div class="nav-buttons">
-                    <button class="btn" onclick="window.print()">🖨️ Imprimir Tutorial</button>
-                    <button class="btn" onclick="alert('¡Ahora practica con los ejercicios interactivos!')">🚀 Ir a Practicar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<script>
+function irAPracticar(){
+document.getElementById("practicar").scrollIntoView({behavior:"smooth"});
+}
+
+function verificar(id, correcta){
+const r=document.getElementById(id).value.replace(/\s+/g,"");
+const f=document.getElementById("feedback");
+f.style.display="block";
+
+if(r===correcta){
+f.innerHTML="🎉 Correcto, excelente trabajo";
+f.style.background="linear-gradient(135deg,#10b981,#059669)";
+}else{
+f.innerHTML="❌ Incorrecto, revisa términos semejantes";
+f.style.background="linear-gradient(135deg,#ef4444,#b91c1c)";
+}
+}
+</script>
+
 </body>
 </html>
