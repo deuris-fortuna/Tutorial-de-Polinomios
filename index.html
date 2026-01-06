@@ -7,53 +7,43 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
 body{
 font-family:'Segoe UI',Tahoma,sans-serif;
 background:linear-gradient(135deg,#667eea,#764ba2);
-min-height:100vh;
 padding:20px;
 }
-
 .container{max-width:1400px;margin:auto}
-
 .header{
 background:white;
 padding:30px;
 border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,.3);
 text-align:center;
 margin-bottom:30px;
 }
-
-.header h1{font-size:48px;color:#667eea}
+.header h1{font-size:46px;color:#667eea}
 .header p{font-size:24px;color:#555}
-
 .example-card{
 background:white;
 padding:40px;
 border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,.3);
 margin-bottom:40px;
+box-shadow:0 10px 35px rgba(0,0,0,.3);
 }
-
 .example-title{
-font-size:36px;
+font-size:34px;
 color:#667eea;
 margin-bottom:25px;
 }
-
 .problem{
 background:linear-gradient(135deg,#667eea,#764ba2);
 color:white;
 padding:25px;
 border-radius:15px;
-font-size:38px;
+font-size:36px;
 text-align:center;
 font-family:'Courier New',monospace;
 margin-bottom:30px;
 }
-
 .step{
 background:#f8f9fa;
 padding:25px;
@@ -61,10 +51,8 @@ border-radius:15px;
 border-left:6px solid #667eea;
 margin-bottom:25px;
 }
-
-.step-title{font-size:28px;font-weight:bold;color:#333;margin-bottom:15px}
+.step-title{font-size:28px;font-weight:bold;margin-bottom:15px}
 .step-content{font-size:24px;color:#555}
-
 .math-work{
 background:white;
 padding:20px;
@@ -74,49 +62,26 @@ font-size:26px;
 border:3px solid #ddd;
 margin-top:15px;
 }
-
 .result{
 background:linear-gradient(135deg,#10b981,#059669);
 color:white;
 padding:25px;
 border-radius:15px;
-font-size:36px;
+font-size:34px;
 text-align:center;
 margin-top:25px;
 }
-
 .btn{
 background:white;
-color:#667eea;
 border:3px solid #667eea;
+color:#667eea;
 padding:18px 35px;
 font-size:22px;
-font-weight:bold;
 border-radius:50px;
 cursor:pointer;
-transition:.3s;
 }
-
-.btn:hover{
-background:#667eea;
-color:white;
-}
-
-input{
-width:100%;
-padding:20px;
-font-size:24px;
-border-radius:10px;
-border:3px solid #667eea;
-margin:20px 0;
-}
-
-.nav-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-margin-top:30px;
-}
+.btn:hover{background:#667eea;color:white}
+.nav-buttons{display:flex;justify-content:center;margin-top:40px}
 </style>
 </head>
 
@@ -125,7 +90,7 @@ margin-top:30px;
 
 <div class="header">
 <h1>📐 Suma y Resta de Polinomios</h1>
-<p>Ejemplos resueltos y práctica guiada</p>
+<p>Explicación paso a paso</p>
 </div>
 
 <!-- SUMA 1 -->
@@ -134,9 +99,29 @@ margin-top:30px;
 <div class="problem">(3x² + 2x - 5) + (x² - 4x + 7)</div>
 
 <div class="step">
-<div class="step-title">Resultado</div>
-<div class="math-work">4x² - 2x + 2</div>
+<div class="step-title">Paso 1: Identificar términos semejantes</div>
+<div class="math-work">
+x²: 3x² y x²<br>
+x: 2x y -4x<br>
+Constantes: -5 y +7
 </div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 2: Agrupar</div>
+<div class="math-work">
+(3x² + x²) + (2x - 4x) + (-5 + 7)
+</div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 3: Operar</div>
+<div class="math-work">
+4x² - 2x + 2
+</div>
+</div>
+
+<div class="result">✓ RESULTADO: 4x² - 2x + 2</div>
 </div>
 
 <!-- SUMA 2 -->
@@ -145,9 +130,29 @@ margin-top:30px;
 <div class="problem">(2x² + 5x - 3) + (4x² - x + 6)</div>
 
 <div class="step">
-<div class="step-title">Resultado</div>
-<div class="math-work">6x² + 4x + 3</div>
+<div class="step-title">Paso 1: Términos semejantes</div>
+<div class="math-work">
+x²: 2x² y 4x²<br>
+x: 5x y -x<br>
+Constantes: -3 y +6
 </div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 2: Agrupar</div>
+<div class="math-work">
+(2x² + 4x²) + (5x - x) + (-3 + 6)
+</div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 3: Resolver</div>
+<div class="math-work">
+6x² + 4x + 3
+</div>
+</div>
+
+<div class="result">✓ RESULTADO: 6x² + 4x + 3</div>
 </div>
 
 <!-- RESTA 1 -->
@@ -156,9 +161,27 @@ margin-top:30px;
 <div class="problem">(5x² + 3x - 2) - (2x² + x - 4)</div>
 
 <div class="step">
-<div class="step-title">Resultado</div>
-<div class="math-work">3x² + 2x + 2</div>
+<div class="step-title">Paso 1: Cambiar signos</div>
+<div class="math-work">
+- (2x² + x - 4) → -2x² - x + 4
 </div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 2: Agrupar</div>
+<div class="math-work">
+(5x² - 2x²) + (3x - x) + (-2 + 4)
+</div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 3: Resolver</div>
+<div class="math-work">
+3x² + 2x + 2
+</div>
+</div>
+
+<div class="result">✓ RESULTADO: 3x² + 2x + 2</div>
 </div>
 
 <!-- RESTA 2 -->
@@ -167,56 +190,43 @@ margin-top:30px;
 <div class="problem">(7x² - 4x + 1) - (3x² - 2x - 5)</div>
 
 <div class="step">
-<div class="step-title">Resultado</div>
-<div class="math-work">4x² - 2x + 6</div>
+<div class="step-title">Paso 1: Cambiar signos</div>
+<div class="math-work">
+- (3x² - 2x - 5) → -3x² + 2x + 5
 </div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 2: Agrupar</div>
+<div class="math-work">
+(7x² - 3x²) + (-4x + 2x) + (1 + 5)
+</div>
+</div>
+
+<div class="step">
+<div class="step-title">Paso 3: Resolver</div>
+<div class="math-work">
+4x² - 2x + 6
+</div>
+</div>
+
+<div class="result">✓ RESULTADO: 4x² - 2x + 6</div>
 </div>
 
 <!-- PRACTICA -->
 <div class="example-card" id="practicar">
-<div class="example-title">📝 PRÁCTICA DEL ESTUDIANTE</div>
-
+<div class="example-title">📝 EJERCICIOS PARA PRACTICAR</div>
 <div class="problem">(x² + 3x + 2) + (2x² - x + 5)</div>
-<input id="r1" placeholder="Respuesta ejercicio 1">
-<button class="btn" onclick="verificar('r1','3x²+2x+7')">Verificar</button>
-
 <div class="problem">(4x² - 5x + 1) - (x² - 2x - 3)</div>
-<input id="r2" placeholder="Respuesta ejercicio 2">
-<button class="btn" onclick="verificar('r2','3x²-3x+4')">Verificar</button>
-
 <div class="problem">(6x² + x - 4) + (2x² + 3x + 6)</div>
-<input id="r3" placeholder="Respuesta ejercicio 3">
-<button class="btn" onclick="verificar('r3','8x²+4x+2')">Verificar</button>
-
-<div id="feedback" class="result" style="display:none"></div>
 </div>
 
 <div class="nav-buttons">
-<button class="btn" onclick="window.print()">🖨️ Imprimir</button>
-<button class="btn" onclick="irAPracticar()">🚀 Ir a Practicar</button>
+<button class="btn" onclick="document.getElementById('practicar').scrollIntoView({behavior:'smooth'})">
+🚀 Ir a Practicar
+</button>
 </div>
 
 </div>
-
-<script>
-function irAPracticar(){
-document.getElementById("practicar").scrollIntoView({behavior:"smooth"});
-}
-
-function verificar(id, correcta){
-const r=document.getElementById(id).value.replace(/\s+/g,"");
-const f=document.getElementById("feedback");
-f.style.display="block";
-
-if(r===correcta){
-f.innerHTML="🎉 Correcto, excelente trabajo";
-f.style.background="linear-gradient(135deg,#10b981,#059669)";
-}else{
-f.innerHTML="❌ Incorrecto, revisa términos semejantes";
-f.style.background="linear-gradient(135deg,#ef4444,#b91c1c)";
-}
-}
-</script>
-
 </body>
 </html>
